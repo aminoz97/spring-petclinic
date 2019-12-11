@@ -2,16 +2,16 @@ pipeline{
 	agent any
 	tools{
 		maven 'apache-maven'
-		jdj 'jdk1.8.0_171'
+		jdk 'jdk1.8.0_171'
 	}
 	stages{
 		stage('Build'){	
 			steps{
-			bat 'mvn install'
+			bat 'mvn test'
 			}
 			post {
-				success{
-					junit 'target/surefire-reports/*/.xml'
+				always{
+					junit "test-results-unit.xml"
 				}
 			}
 		}
