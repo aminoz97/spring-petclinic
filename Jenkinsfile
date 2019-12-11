@@ -10,7 +10,7 @@ pipeline{
 			bat 'mvn install'
 			}
 			post {
-				success{
+				always{
 					junit 'target/surefire-reports/*/.xml'
 				}
 			}
